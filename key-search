@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 2 ]; then
+	echo "Usage: $0 <folder_path> <search_keyword>"
+	exit 1
+fi
+
+FOLDER=$1
+KEYWORD=$2
+
+# Search for keyword
+find "$FOLDER" -name "*.pdf" -exec pdftotext {} - \; | grep -i "$KEYWORD"
